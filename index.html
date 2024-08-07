@@ -21,13 +21,45 @@
         .uv:nth-child(4){left: 60%;top: 0;}
         .pr{width: 100%;height: 20%;display: flex;position: absolute;top: 40%;left: 0;background-color: blue;opacity: 0;}
         .po{background-color: blue;opacity: 1;flex-grow: 1;width: 20%;height: 100%;}
-        .pf{background-color: blue;opacity: 1;flex-grow: 1;width: 20%;height: 100%;}
+        .pf{background-color: blue;opacity: 1;flex-grow: 1;width: 20%;height: 100%;position: relative;}
+        .pf:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            opacity: 0;
+            transition: opacity 2s; /* 2초 동안 서서히 사라지게 하기 */
+            z-index: 1;
+        }
+        .pf.hide:after {
+            opacity: 1;
+        }
         .p1{position: absolute;top: 0;left: 0;}
         .p2{position: absolute;top: 0;left: 20%;}
         .p3{position: absolute;top: 0;left: 40%;}
         .p4{position: absolute;top: 0;left: 60%;}
         .p5{position: absolute;top: 0;left: 80%;}
         .ox{width: 100%;height: 20%;display: flex;position: absolute;top: 60%;left: 0;background-color: skyblue;opacity: 0;}
+        .oo{opacity: 1;flex-grow: 1;width: 20%;height: 100%;}
+        .of{opacity: 1;flex-grow: 1;width: 20%;height: 100%;position: relative;}
+        .of:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            opacity: 0;
+            transition: opacity 2s; /* 2초 동안 서서히 사라지게 하기 */
+            z-index: 1;
+        }
+        .of.hide:after {
+            opacity: 1;
+        }
         .o1{position: absolute;top: 0;left: 0;}
         .o2{position: absolute;top: 0;left: 20%;}
         .o3{position: absolute;top: 0;left: 40%;}
@@ -39,6 +71,21 @@
         .w3{position: absolute;top: 0;left: 40%;width: 20%;height: 100%;justify-content: center;align-items: center;display: flex;}
         .w4{position: absolute;top: 0;left: 60%;width: 20%;height: 100%;justify-content: center;align-items: center;display: flex;}
         .w5{position: absolute;top: 0;left: 80%;width: 20%;height: 100%;justify-content: center;align-items: center;display: flex;}
+        .w2:after,.w4::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: green;
+            opacity: 0;
+            transition: opacity 2s; /* 2초 동안 서서히 사라지게 하기 */
+            z-index: 1;
+        }
+        .w2.hide:after,.w4.hide::after {
+            opacity: 1;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
@@ -105,17 +152,34 @@
                     $('.uv').animate({opacity:1},2000).delay(1000).animate({opacity:0},2000)
                     break;
                 case 5:
-                    $('.pf').animate({backgroundColor:'white'},2000)
+                    $('.pf').addClass('hide')
+                    $('.mask').animate({opacity:0},2000)
                     break;
                 case 6:
-                    $('.word').text('oxidation')
-                    $('.ox').animate({opacity:1},2000)
+                    $('.word').text('etching')
+                    $('.of').addClass('hide')
+                    break;
+                case 7:
+                    $('.word').text('cleaning')
+                    $('.pr').animate({opacity:0},2000)
+                    break;
+                case 8:
+                    $('.word').text('implant')
+                    $('.w2,.w4').addClass('hide')
+                    break;
+                case 9:
+                    $('.word').text('thinfilm')
+                    $('.oo').css({borderColor:'black',borderLeft:'2px',borderRight:'2px',borderTop:'2px',borderStyle:'solid',boxSizing:'border-box',borderBottom:'none'})
+                    $('.of').css({borderColor:'black',borderLeft:'none',borderRight:'none',borderBottom:'2px',borderStyle:'solid',boxSizing:'border-box',borderTop:'none'})
+                    break;
+                case 10:
+                    window.close()
                     break;
                     
                     default:
                         break;
-                    }
-        })
+                    }//switch
+        })//wafer click
     </script>
 </body>
 </html>
