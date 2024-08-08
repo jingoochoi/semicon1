@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>foundry1</title>
     <style>
+        .word{text-align: center;font-size: 60px;font-weight: bold;}
         .semi{width: 500px;height: 500px;position: absolute;transform: translate(-50%,-50%);top: 50%;left: 50%;}
         .mask{width: 100%;height: 20%;display: flex;position: absolute;}
         .co{background-color: black;width: 20%;height: 100%;position: absolute;opacity: 0;}
@@ -65,7 +66,7 @@
         .o3{position: absolute;top: 0;left: 40%;}
         .o4{position: absolute;top: 0;left: 60%;}
         .o5{position: absolute;top: 0;left: 80%;}
-        .wafe{width: 100%;height: 20%;display: flex;position: absolute;top: 80%;left: 0;background-color: #ccc;border: 1px solid black;font-size: 100px;justify-content: center;align-items: center;}
+        .wafe{width: 100%;height: 20%;display: flex;position: absolute;top: 80%;left: 0;background-color: #ccc;border: 1px solid black;font-size: 100px;justify-content: center;align-items: center;cursor: pointer;}
         .w1{position: absolute;top: 0;left: 0;width: 20%;height: 100%;justify-content: center;align-items: center;display: flex;}
         .w2{position: absolute;top: 0;left: 20%;width: 20%;height: 100%;justify-content: center;align-items: center;display: flex;}
         .w3{position: absolute;top: 0;left: 40%;width: 20%;height: 100%;justify-content: center;align-items: center;display: flex;}
@@ -85,6 +86,11 @@
         }
         .w2.hide:after,.w4.hide::after {
             opacity: 1;
+        }
+        @media screen and (max-width:600px) {
+            .word{font-size: 30px;}
+            .semi{width: 100px;height: 100px;}
+            .wafe{font-size: 20px;}
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
