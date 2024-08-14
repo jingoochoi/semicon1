@@ -194,7 +194,18 @@
                     });
                     break;
                 case 10:
-                    window.close()
+                if (typeof Android !== 'undefined' && Android.closeApp) {
+                    // Android 웹뷰에서 동작
+                    Android.closeApp();
+                    } else if (typeof webkit !== 'undefined' && webkit.             messageHandlers && webkit.messageHandlers.closeApp) {
+                        // iOS 웹뷰에서 동작
+                        webkit.messageHandlers.closeApp.postMessage(null);
+                    } else if (typeof window !== 'undefined' && window.close) {
+                        // 일반 웹 브라우저에서 동작
+                        window.close();
+                    } else {
+                        console.log("이 창은 닫을 수 없습니다.");
+                    }
                     break;
                     
                     default:
